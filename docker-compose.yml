@@ -4,4 +4,4 @@ services:
     image: "s3l4h/mlops-tp1:main"
     container_name: "lilian-houst-predict"
     ports:
-      - "55555:8000"
+      - "8765:8000"
