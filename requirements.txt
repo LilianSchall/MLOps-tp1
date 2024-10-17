@@ -3,4 +3,3 @@ requests
 Flask
 gunicorn
 scikit-learn
-streamlit

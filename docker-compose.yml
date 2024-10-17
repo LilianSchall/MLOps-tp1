@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  lilian-house-predict:
+    image: "s3l4h/mlops-tp1:latest"
+    container_name: "lilian-houst-predict"
+    ports:
+      - "55555:8000"
