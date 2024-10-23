@@ -40,3 +40,19 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  deploy_container:
+    name: Deploy image on remote
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install sshpass
+        run: |
+          apt-get update
+          apt-get install sshpass
+      - name: Connect to machine and pop compose
+        run: |
+          sshpass -p ${{ secrets.REMOTE_PASSWORD }} ssh ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_IP }} \
+          "cd ${{ secrets.LOGIN_STUDENT }} &&\
+           docker compose down && \
+           git pull &&\
+           docker compose up -d --pull always"
