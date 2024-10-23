@@ -47,8 +47,7 @@ jobs:
     steps:
       - name: Install sshpass
         run: |
-          apt-get update
-          apt-get install sshpass
+          sudo apt-get install -y sshpass
       - name: Connect to machine and pop compose
         run: |
           sshpass -p ${{ secrets.REMOTE_PASSWORD }} ssh ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_IP }} \
