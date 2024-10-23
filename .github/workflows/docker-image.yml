@@ -50,7 +50,7 @@ jobs:
           sudo apt-get install -y sshpass
       - name: Connect to machine and pop compose
         run: |
-          sshpass -p '${{ secrets.REMOTE_PASSWORD }}' ssh ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_IP }} \
+          sshpass -p '${{ secrets.REMOTE_PASSWORD }}' ssh -o "StrictHostKeyChecking=no" ${{ secrets.REMOTE_USERNAME }}@${{ secrets.REMOTE_IP }} \
           "rm -rf '${{ secrets.LOGIN_STUDENT }}' &&\
           git clone https://github.com/LilianSchall/MLOps-tp1.git '${{ secrets.LOGIN_STUDENT }}'&&\
           cd '${{ secrets.LOGIN_STUDENT }}' &&\
