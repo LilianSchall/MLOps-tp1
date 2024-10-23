@@ -54,5 +54,4 @@ jobs:
           "rm -rf '${{ secrets.LOGIN_STUDENT }}' &&\
           git clone https://github.com/LilianSchall/MLOps-tp1.git '${{ secrets.LOGIN_STUDENT }}'&&\
           cd '${{ secrets.LOGIN_STUDENT }}' &&\
-           docker compose down || \
-           docker compose up -d --pull always"
+          docker compose up -d --pull always --force-recreate"
